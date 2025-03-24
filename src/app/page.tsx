@@ -5,11 +5,12 @@ import Projects from "@/components/Projects";
 import ResumeButton from "@/components/ResumeButton";
 import Socials from "@/components/Socials";
 import { getPosts } from "@/lib/posts";
+import CursorDot from "@/components/CursorDot";
 import {
   ArrowDownRight,
   ArrowRightIcon,
 } from "lucide-react";
-import LoadingImage from "@/components/LoadingImage";
+import Image from "next/image";
 import Link from "next/link";
 import path from "path";
 
@@ -21,7 +22,9 @@ export default async function Home() {
   const posts = await getPosts(blogDirectory, LIMIT);
 
   return (
-    <article className="mt-8 flex flex-col gap-5 pb-16">
+    <>
+      <CursorDot />
+      <article className="mt-8 flex flex-col gap-5 pb-16">
       <section className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-center md:justify-between">
         <div className="flex flex-col items-center gap-4">
           <div className="relative flex flex-col items-center gap-4">
@@ -38,13 +41,12 @@ export default async function Home() {
             </div>
 
             {/* Main Image */}
-            <LoadingImage
+            <Image
               src="/mohammad.jpg"
               alt="Photo of Ted"
               width={175}
               height={175}
               className="rounded-lg relative"
-              threshold={3000}
             />
 
           </div>
@@ -104,6 +106,7 @@ export default async function Home() {
         </div>
         <Posts posts={posts} />
       </section>
-    </article>
+      </article>
+    </>
   );
 }
