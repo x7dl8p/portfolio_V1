@@ -1,32 +1,25 @@
 import dotenv from "dotenv";
 dotenv.config({ path: ".env.local" });
 
-import { DocumentInterface } from "@langchain/core/documents";
-import { Redis } from "@upstash/redis";
+import type { DocumentInterface } from "@langchain/core/documents";
 import { DirectoryLoader } from "langchain/document_loaders/fs/directory";
 import { TextLoader } from "langchain/document_loaders/fs/text";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { getEmbeddingsCollection, getVectorStore } from "../src/lib/vectordb";
 
 async function generateEmbeddings() {
-  const vectorStore = await getVectorStore();
-
-  // clear existing data
-  (await getEmbeddingsCollection()).deleteMany({});
-  (await Redis.fromEnv()).flushdb();
 
   const routeLoader = new DirectoryLoader(
     "src/app",
     {
-      ".tsx": (path) => new TextLoader(path),
+      ".tsx": (path: string) => new TextLoader(path),
     },
     true,
   );
 
   // routes
   const routes = (await routeLoader.load())
-    .filter((route) => route.metadata.source.endsWith("page.tsx"))
-    .map((route): DocumentInterface => {
+    .filter((route) => route.metadata?.source?.endsWith("page.tsx"))
+    .map((route) => {
       const url =
         route.metadata.source
           .replace(/\\/g, "/") // replace "\\" with "/"
@@ -49,7 +42,7 @@ async function generateEmbeddings() {
 
   // resume data
   const dataLoader = new DirectoryLoader("src/data", {
-    ".json": (path) => new TextLoader(path),
+    ".json": (path: string) => new TextLoader(path),
   });
 
   const data = await dataLoader.load();
@@ -63,14 +56,14 @@ async function generateEmbeddings() {
   const postLoader = new DirectoryLoader(
     "content",
     {
-      ".mdx": (path) => new TextLoader(path),
+      ".mdx": (path: string) => new TextLoader(path),
     },
     true,
   );
 
   const posts = (await postLoader.load())
-    .filter((post) => post.metadata.source.endsWith(".mdx"))
-    .map((post): DocumentInterface => {
+    .filter((post) => post.metadata?.source?.endsWith(".mdx"))
+    .map((post) => {
       const pageContentTrimmed = post.pageContent.split("---")[1]; // only want the frontmatter
 
       return { pageContent: pageContentTrimmed, metadata: post.metadata };
@@ -81,9 +74,6 @@ async function generateEmbeddings() {
   const postSplitter = RecursiveCharacterTextSplitter.fromLanguage("markdown");
   const splitPosts = await postSplitter.splitDocuments(posts);
 
-  await vectorStore.addDocuments(splitRoutes);
-  await vectorStore.addDocuments(splitData);
-  await vectorStore.addDocuments(splitPosts);
 }
 
 generateEmbeddings();

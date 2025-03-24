@@ -20,17 +20,20 @@ export function ProjectCard({ project }: Props) {
   const { name, href, description, image, tags, links } = project;
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col overflow-hidden border border-border/40 bg-card transition-all duration-300 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5">
       <CardHeader>
         {image && (
           <Link href={href || image}>
-            <Image
-              src={image}
-              alt={name}
-              width={500}
-              height={300}
-              className="h-40 w-full object-cover object-top"
-            />
+            <div className="relative">
+              <Image
+                src={image}
+                alt={name}
+                width={500}
+                height={300}
+                className="h-40 w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            </div>
           </Link>
         )}
       </CardHeader>

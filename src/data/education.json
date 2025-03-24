@@ -1,16 +1,16 @@
 {
   "education": [
     {
-      "name": "Digipen Institute of Technology Singapore",
-      "href": "https://www.digipen.edu.sg",
-      "title": "BS in Computer Science in Real-Time Interactive Simulation",
-      "logo": "/digipen.png",
-      "start": "Sep 2019",
-      "end": "Apr 2023",
+      "name": "Abdul Kalam Technical University, Lucknow.",
+      "href": "https://aktu.ac.in/history.html",
+      "title": "Bachelor of Technology (B.Tech) in Computer Science with a specialization in Artificial Intelligence and Machine Learning.",
+      "logo": "/aktu.png",
+      "start": "Sep 2022",
+      "end": "Apr 2026",
       "description": [
-        "Graduated with a Minor in Mathematics",
-        "President of Digipen Student Management Committee for freshman year",
-        "3-time recipient of the Dean's Honor List"
+        "Graduated with a Honors in cybersecurity",
+        "Member of Google Developement Student Club",
+        "2-time recipient of the best Event managment award"
       ],
       "links": [
         {
@@ -26,12 +26,12 @@
       ]
     },
     {
-      "name": "Singapore Polytechnic",
-      "href": "https://www.sp.edu.sg",
-      "title": "Diploma in Games Design and Development",
-      "logo": "/sp.png",
+      "name": "S.F.E College",
+      "href": "https://schools.org.in/kanpur-nagar/09341400153/siddiq-faiz-e-am-inter-college.html",
+      "title": "High School and Post-secondary education",
+      "logo": "/faiz.png",
       "start": "Apr 2014",
-      "end": "May 2017"
+      "end": "May 2022"
     }
   ]
 }
