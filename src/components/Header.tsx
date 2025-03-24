@@ -23,7 +23,7 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/75 py-1 px-2 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full bg-background/75 py-1 px-4 backdrop-blur-md">
       <nav className="flex items-center justify-between">
         <ul className="flex gap-4 sm:gap-8">
           {navLinks.map((nav, id) => (

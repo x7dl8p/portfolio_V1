@@ -14,7 +14,7 @@ import Link from "next/link";
 import path from "path";
 
 const blogDirectory = path.join(process.cwd(), "content");
-const TED_BIRTH_YEAR = 2004;
+const BIRTH_YEAR = 2004;
 const LIMIT = 2; // max show 2
 
 export default async function Home() {
@@ -25,37 +25,39 @@ export default async function Home() {
       <section className="flex flex-col items-start gap-8 md:flex-row-reverse md:items-center md:justify-between">
         <div className="flex flex-col items-center gap-4">
           <div className="relative flex flex-col items-center gap-4">
+
             {/* Glowing Effect - Positioned Behind */}
             <div className="absolute inset-0 rounded-lg blur-2xl opacity-50"
               style={{
-                background: `url('/ted.jpg')`,
+                background: `url('/mohammad.jpg')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 filter: 'blur(30px) brightness(1.8)',
-                transform: 'translate(20px, -10px)',
+                transform: 'translate(15px, -10px)',
               }}>
             </div>
 
             {/* Main Image */}
             <LoadingImage
-              src="/ted.jpg"
+              src="/mohammad.jpg"
               alt="Photo of Ted"
               width={175}
               height={175}
               className="rounded-lg relative"
               threshold={3000}
             />
+
           </div>
         </div>
         <div className="flex flex-col">
           <div className="flex flex-row">
-            <h1 className="title text-4xl">Hi Ted here</h1>
+            <h1 className="title text-4xl">Hi Mohammad here</h1>
             <div className="px-2"></div>
             <h1 className="text-3xl"><span className="wave">👋</span></h1>
           </div>
           <p className="mt-4 font-light">
             {/* Update my age */}
-            {new Date().getFullYear() - TED_BIRTH_YEAR}
+            {new Date().getFullYear() - BIRTH_YEAR}
             -year-old <s>Frontend</s> Full-Stack developer from Earth.
           </p>
           <p className="mt-1 font-light">

@@ -10,7 +10,7 @@ export default function Experience() {
 
   return (
     <Tabs defaultValue="work">
-      <TabsList className="mb-2 grid w-full grid-cols-2 transition-shadow hover:ring-1 hover:ring-primary/20 hover:ring-offset-10">
+      <TabsList className="mb-2 grid w-full grid-cols-2 transition-shadow ring-1 ring-primary/20 hover:ring-primary/20 hover:ring-offset-10">
         <TabsTrigger value="work" className="transition-colors hover:bg-primary/5 hover:text-primary">Work</TabsTrigger>
         <TabsTrigger value="education" className="transition-colors hover:bg-primary/5 hover:text-primary">Education</TabsTrigger>
       </TabsList>

@@ -1,11 +1,10 @@
 "use server";
 
-import ContactFormEmail from "@/components/email/ContactFormEmail";
 import { Resend } from "resend";
 import { z } from "zod";
 import { ContactFormSchema } from "./schemas";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend('re_EpxYEKs2_7HuGVBRjcnZ7mGrRxBrTMamb');
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>;
 
@@ -19,8 +18,8 @@ export async function sendEmail(data: ContactFormInputs) {
   try {
     const { name, email, message } = result.data;
     const { data, error } = await resend.emails.send({
-      from: `tedawf.com <contact@tedawf.com>`,
-      to: "hello@tedawf.com",
+      from: 'onboarding@resend.dev',
+      to: 'ahmad.khan200499@gmail.com',
       replyTo: [email],
       cc: [email],
       subject: `New message from ${name}!`,
