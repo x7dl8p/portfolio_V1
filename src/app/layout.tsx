@@ -20,13 +20,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn("flex min-h-screen flex-col font-sans antialiased")}>
         <Header />
-        <div className="mx-auto flex w-full max-w-3xl flex-col px-8">
+        <div className="mx-auto flex w-full max-w-[52rem] flex-col px-8">
           <Providers>
             <PointsCounter />
             <main className="grow">{children}</main>
-            <Footer />
           </Providers>
         </div>
+        <Footer />
       </body>
     </html>
   );

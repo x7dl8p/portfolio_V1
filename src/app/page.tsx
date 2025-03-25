@@ -1,4 +1,4 @@
-import Experience from "@/components/Experience";
+import Experience from "@/components/TimeLIneSwitch";
 import LinkWithIcon from "@/components/LinkWithIcon";
 import Posts from "@/components/Posts";
 import Projects from "@/components/Projects";
