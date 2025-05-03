@@ -1,9 +1,17 @@
+"use client";
+
 import data from "@/data/socials.json";
 import { socialSchema } from "@/lib/schemas";
+import { usePoints } from "@/contexts/PointsContext";
 import Icon from "./Icon";
 
 export default function Socials() {
   const socials = socialSchema.parse(data).socials;
+  const { addPoints } = usePoints();
+  
+  const handleSocialClick = (name: string) => {
+    addPoints(3, `You checked out my ${name}! Thanks for connecting.`);
+  };
 
   return (
     <section className="flex gap-6">
@@ -15,6 +23,7 @@ export default function Socials() {
           className="text-muted-foreground hover:text-foreground"
           rel="noopener noreferrer"
           title={item.name}
+          onClick={() => handleSocialClick(item.name)}
         >
           <span className="sr-only">{item.name}</span>
           <Icon name={item.icon} aria-hidden="true" className="size-5" />
